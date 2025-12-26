@@ -1,0 +1,225 @@
+/* index.css - put this in src/index.css and import in App.js (already done) */
+
+:root {
+  --bg: #fbfbfd;
+  --muted: #6b7280;
+  --card: #ffffff;
+  --accent: #312e81;
+  --success: #0ea5a4;
+  --danger: #f43f5e;
+  --shadow: 0 8px 24px rgba(0,0,0,0.06);
+  font-family: Inter, system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: #111827;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app {
+  max-width: 1100px;
+  margin: 18px auto;
+  padding: 18px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 26px;
+}
+.sub {
+  margin-top: 6px;
+  margin-bottom: 18px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.row {
+  display: flex;
+  gap: 16px;
+}
+
+.left {
+  flex: 1;
+}
+
+.right {
+  width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Search */
+.searchRow {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #e6e7eb;
+  font-size: 14px;
+  outline: none;
+}
+.input:focus {
+  box-shadow: 0 4px 18px rgba(49,46,129,0.06);
+  border-color: rgba(49,46,129,0.12);
+}
+
+/* Buttons */
+.btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.btnSmall {
+  background: #f3f4f6;
+  color: #111827;
+  border: none;
+  padding: 6px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+}
+.btn.saveBtn {
+  background: var(--success);
+  color: #fff;
+}
+.btnSmall.danger {
+  background: var(--danger);
+  color: #fff;
+}
+
+/* Preview */
+.preview {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+}
+.gradientLayer {
+  position: absolute;
+  inset: 0;
+  transition: background 600ms linear, filter 300ms ease;
+  transform-origin: center;
+}
+.previewImg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%) scale(1.02);
+  min-width: 110%;
+  min-height: 110%;
+  object-fit: cover;
+  opacity: 0.95;
+  transition: transform 600ms ease, opacity 400ms ease;
+  filter: grayscale(0.02) contrast(1.02);
+}
+.gifOverlay {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  max-width: 70%;
+  max-height: 70%;
+  pointer-events: none;
+}
+
+/* Palette chips + pulse */
+.paletteChips {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  gap: 8px;
+}
+.chip { width: 44px; height: 30px; border-radius: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.25); }
+
+/* Save pulse */
+.savePulse {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.savePulse::before {
+  content: "";
+  width: 160px;
+  height: 160px;
+  border-radius: 80px;
+  background: rgba(255,255,255,0.12);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+  animation: pulse 900ms ease;
+}
+
+/* Controls area */
+.controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 10px;
+}
+.controlBtns { display: flex; gap: 8px; align-items: center; }
+
+/* Thumbnails */
+.thumbSection { margin-top: 12px; }
+.thumbLabel { font-size: 13px; color: #444; margin-bottom: 6px; }
+.thumbnails { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; }
+.thumb {
+  width: 110px; height: 70px; object-fit: cover; border-radius: 8px; cursor: pointer;
+  border: 1px solid #eee;
+}
+.selectedThumb { box-shadow: 0 8px 30px rgba(14,165,164,0.18); border: 2px solid rgba(14,165,164,0.15); }
+
+/* Cards */
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: var(--shadow);
+}
+.cardTitle { font-size: 13px; color: #333; margin-bottom: 8px; }
+.label { font-size: 13px; color: #555; margin-top: 8px; }
+.range { width: 100%; }
+
+/* Favorites */
+.favHeader { display:flex; justify-content:space-between; align-items:center; }
+.muted { color: var(--muted); font-size: 13px; }
+.favList { margin-top: 10px; display:flex; flex-direction:column; gap:8px; }
+.favItem { display:flex; gap:8px; align-items:center; }
+.favThumb { width:56px; height:36px; border-radius:6px; overflow:hidden; }
+.favThumb img { width:100%; height:100%; object-fit:cover; }
+.favMeta { flex:1; }
+.favTitle { font-size:13px; }
+.favActions { display:flex; gap:8px; align-items:center; }
+
+/* Footer */
+.foot { margin-top: 8px; font-size: 12px; color: var(--muted); }
+
+/* Loading */
+.loading { color: var(--muted); }
+
+/* keyframes */
+@keyframes pulse {
+  0% { transform: scale(0.6); opacity: 0.6 }
+  50% { transform: scale(1.05); opacity: 1 }
+  100% { transform: scale(0.9); opacity: 0 }
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .row { flex-direction: column; }
+  .right { width: 100%; }
+}
